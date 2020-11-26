@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name ="Prototype Ladder">
+	<meta name = "keywords" content = "Leaderboard, ladder, social, media">
+    <title>social media name</title>
+    <link rel="stylesheet" href="stylesheets/main-style.css">
+    <link rel="stylesheet" href="stylesheets/flair.css">
+</head>
+<body>
+    
+    <div id = "page">
+        <header>
+            <h1>Social Media Home Page!!</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="leaderboard.php">Leaderboard Page</a></li>
+                <li><a href="Createdatabase.php">Create</a></li>
+            </ul>
+        </nav>
+        <main>
+            <?php 
+            session_save_path('./');
+            session_start();
+            
+                if(isset($_SESSION['ErrorMessage'])){
+                    echo $_SESSION['ErrorMessage'];
+                }
+            ?>
+            <div id="login">
+                <p>Login</p>
+                <form action="LoginVerify.php" method ="POST">
+                    <label for="UserName">User name:</label><br>
+                    <input type="text" id="UserName" name="UserName" value="John"><br>
+                    <label for="Score">Password:</label><br>
+                    <input type="password" id="Password" name="Password" value="password"><br><br>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+
+        </main>
+       
+    </div>
+</body>
+</html>

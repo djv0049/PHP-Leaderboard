@@ -1,0 +1,25 @@
+header{
+    background-color:grey;
+}
+#titleRow{
+    background-color:#0066bb;
+}
+.loadMore{
+    background-color: rgba(255, 0, 157, 0.514);
+}
+.rank, .profilePic, .date, .country, .name, .score{
+    color: #000000;
+}
+nav{
+    background-color: #115555;
+}
+#leaderboard{
+    opacity: 90%;
+    background-color: #0000bb;
+}
+.topBar{
+    background-color: #001122;
+}
+.filters{
+    color:white;
+}

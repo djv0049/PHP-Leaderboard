@@ -1,0 +1,106 @@
+/*CSS FOR TEMPLATE OF SOCIAL MEDIA COMMUNITY OF TaM GAME*/
+
+
+/*LAYOUT*/
+*{
+    text-emphasis-color: black;
+}
+
+body, html{
+    height: 98%;
+}
+
+#page{
+    height: 95%;
+}
+nav,header{
+    width:90%;
+    height:auto;
+    padding: 1rem;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+header{
+    align-self: center;
+    display: flex;
+    justify-content: center;
+
+}
+
+.loadMore{
+    display: flex;
+    justify-content: center;
+    
+}
+#leaderboard , #scoreSubmit{
+    align-items: left;
+    margin:auto;
+    width: 50%;
+    padding: 1rem;
+}
+#scoreSubmit{
+    align-items: center;
+}
+.scoreEntry, #titleRow{
+    display: flex;
+    flex: 1;
+}
+.rank, .profilePic, .date, .country, .name, .score{
+    margin: 1rem, auto;
+}
+.topBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.filters{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    align-items: center;
+    
+}
+.filters>select{
+    height: fit-content;
+    margin: 0.5rem;
+
+}
+    /*in chart*/
+.rank ,.country, .profilePic{ 
+    width: 10%;
+}
+.profilePic{
+    width: 10%;
+    /* add img stuff later*/
+}
+.name{
+    width: 30%;
+}
+
+.date, .score{
+    width: 20%;
+}
+
+
+/*FONTS / TYPOGRAPHY*/
+
+#titleRow, .rank{
+    font-weight: bold;
+    
+}
+.scoreEntry>p, #titleRow>p, nav{
+    text-align: center;
+}
+nav>ul{
+    list-style: none;
+}
+
+
+/*night mode for developing when Tilly is asleep
+*{
+    background-color: #440000;
+    color: #006600;
+}
+
+
