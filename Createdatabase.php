@@ -78,7 +78,7 @@ $result = $db->query($sql);
 
 
     $sql = "create table if not exists Score(
-        id int auto_increment not null primary key,
+        id int auto_increment primary key,
         profileId smallint not null,
         profileType varchar(7) not null,
         score int not null,
@@ -126,22 +126,37 @@ CONSTRAINT `fk_book_author`
     $sql = "insert into Country values(\"AUS\", \"Australia\");";
     $result = $db->query($sql);
 
-    $sql = "insert into User values(1, \"daniel\", \"NZ\", \"dan@ara.com\",'\$2y\$10\$pFKDAdTEmb3LVxYzM.KWbu9TWgx1u1nVfk6zuhEzox2OsFSgkqWB6');";
+    $sql = "insert into User values(1, \"Daniel\", \"NZ\", \"dan@ara.com\",'\$2y\$10\$pFKDAdTEmb3LVxYzM.KWbu9TWgx1u1nVfk6zuhEzox2OsFSgkqWB6');";
     $result = $db->query($sql);
     $sql = "insert into User values(2, \"Matt\", \"AUS\", \"matt@ara.com\",'\$2y\$10\$pFKDAdTEmb3LVxYzM.KWbu9TWgx1u1nVfk6zuhEzox2OsFSgkqWB6');";
     $result = $db->query($sql);
 
     $sql = "insert into UserProfile values(\"gaming\", 1, 12);";
     $result = $db->query($sql);
+    $sql = "insert into UserProfile values(\"hindi\", 1, 12);";
+    $result = $db->query($sql);
+    $sql = "insert into UserProfile values(\"gaming\", 2, 19);";
+    $result = $db->query($sql);
     $sql = "insert into UserProfile values(\"hindi\", 2, 19);";
     $result = $db->query($sql);
 
-    $sql = "insert into Score values(1, 1, \"gaming\", 8, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 8, 11102020, 0);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(2, 1, \"gaming\", 9, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 9, 11102020, 0);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(3, 2, \"gaming\", 12, 11102020, 1);";
+    $sql = "insert into Score values(null, 2, \"gaming\", 12, 11102020, 0);";
     $result = $db->query($sql);
+    $sql = "insert into Score values(null, 2, \"gaming\", 118, 11102020, 0);";
+    $result = $db->query($sql);
+    $sql = "insert into Score values(null, 2, \"gaming\", 2, 11102020, 0);";
+    $result = $db->query($sql);
+    $sql = "insert into Score values(null, 2, \"gaming\", 4, 11102020, 0);";
+    $result = $db->query($sql);
+    $sql = "insert into Score values(null, 1, \"gaming\", 81, 11102020, 0);";
+    $result = $db->query($sql);
+    $sql = "insert into Score values(null, 1, \"gaming\", 91, 11102020, 0);";
+    $result = $db->query($sql);
+
 
     $sql = "insert into XpGained values(2, 2, \"hindi\", 19, 12102020);";
     $result = $db->query($sql);
@@ -162,3 +177,6 @@ CONSTRAINT `fk_book_author`
     join country on country.code = user.country
     where country = \"Nz\";";
     $result = $db->query($sql);
+
+
+header('location: index.html');
