@@ -80,7 +80,10 @@
                         $lb->button2(); 
                     } 
                     else if(array_key_exists('load', $_POST)) { 
-                        $lb->loadmore(); 
+                        $lb->loadMore(); 
+                    } 
+                    else if(array_key_exists('less', $_POST)) { 
+                        $lb->loadLess(); 
                     } 
                     else{
                         $lb->sortAsc();

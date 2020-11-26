@@ -73,22 +73,42 @@ class Leaderboard
         <form method="post"> 
             <input style="margin:0.5rem;" type="submit" name="load"
                     class="button" value="<?php echo $this->language['load']?>" /> 
+                    <input style="margin:0.5rem;" type="submit" name="less"
+                    class="button" value="<?php echo $this->language['less']?>" /> 
         </form> 
         <?php
     }
 
-    function loadmore()
+    function loadMore()
     {
-        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] >5)){
-            echo "penis";
+        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] > 5)){
             $_SESSION['maxresults'] =5;
         }
 
-        else if ($_SESSION['maxresults'] <  count($this->allresults)){
+        else if ($_SESSION['maxresults'] < count($this->allresults)){
             $_SESSION['maxresults'] +=5;
         }
-        
-        switch(Leaderboard::$sorted){
+        $this->loadResults();
+    }
+
+    function loadLess()
+    {
+        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] >5))
+        {
+            $_SESSION['maxresults'] =5;
+        }
+
+        else if ($_SESSION['maxresults'] >  count($this->allresults))
+        {
+            $_SESSION['maxresults'] -=5;
+        }
+        $this->loadResults();
+    }
+
+    function loadResults()
+    {
+        switch(Leaderboard::$sorted)
+        {
             case 'ascending':
                 $this->sortAsc();
                 break;

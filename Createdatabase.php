@@ -3,7 +3,8 @@
 <?php
 require_once 'database.php';
 require_once 'db.php';
-$db->selectDatabase();  
+$db->selectDatabase();
+session_destroy();
 
 
 
