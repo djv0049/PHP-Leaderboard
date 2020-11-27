@@ -50,11 +50,11 @@
                     <form method="post"> 
                         <input style="margin:0.5rem;" type="submit" name="sortasc"
                                 class="button" value="<?php echo $lb->language['sort']?>" /> 
-                        
                         <input style="margin:0.5rem;" type="submit" name="sortdesc"
                                 class="button" value="<?php echo $lb->language['sortdesc']?>" /> 
-                                <input style="margin:0.5rem;" type="submit" name="add"
+                        <input style="margin:0.5rem;" type="submit" name="add"
                                 class="button" value="<?php echo $lb->language['add']?>" /> 
+                                <input type = "text" name = "newscore">
                     </form> 
                     
                 </div>
@@ -70,28 +70,32 @@
                     
                 <?php 
                     
-                    if(array_key_exists('sortasc', $_POST)) { 
+                    if(array_key_exists('sortasc', $_POST)) 
+                    { 
                         $lb->sortAsc();
                     } 
-                    else if(array_key_exists('sortdesc', $_POST)) { 
+                    else if(array_key_exists('sortdesc', $_POST)) 
+                    { 
                         $lb->sortDesc();
                     } 
-                    else if(array_key_exists('add', $_POST)) { 
-                        $lb->button2(); 
-                    } 
-                    else if(array_key_exists('load', $_POST)) { 
+                    else if(array_key_exists('load', $_POST)) 
+                    { 
                         $lb->loadMore(); 
                     } 
-                    else if(array_key_exists('less', $_POST)) { 
+                    else if(array_key_exists('less', $_POST))
+                     { 
                         $lb->loadLess(); 
                     } 
-                    else{
+                    else
+                    {
                         $lb->sortAsc();
                     }
+                    if(array_key_exists('add', $_POST))// || array_key_exists('newscore',$_POST)) 
+                    { 
+                        $lb->addScore(); 
+                    } 
                     
-                    function button2() { 
-                        echo "This is Button2 that is selected"; 
-                    } ?>
+                    ?>
                 </div>
                 
             </div>

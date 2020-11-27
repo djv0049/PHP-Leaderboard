@@ -43,7 +43,6 @@ $result = $db->query($sql);
     $sql = "create table if not exists ScoreDate(
         id varchar(8) primary key not null,
         day int(2) not null,
-        week int(2) not null,
         month int(2) not null,
         year int(4) not null
     );";
@@ -83,14 +82,13 @@ $result = $db->query($sql);
         profileId smallint not null,
         profileType varchar(7) not null,
         score int not null,
-        dateId varchar(8) not null,
-        isHighScore boolean not null
+        dateId varchar(8) not null
     )engine = innodb;";
     $result = $db->query($sql);
 
 
     $sql = "create table if not exists XpGained(
-        id int auto_increment not null primary key,
+        id int auto_increment primary key,
         profileId smallint not null,
         profileType varchar(7) not null,
         amountGained Int not null, 
@@ -116,10 +114,10 @@ CONSTRAINT `fk_book_author`
 
 
 // insert data
-
-    $sql = "insert into ScoreDate values(11102020, 11, 42, 10, 2020 );";
+          //insert into ScoreDate values(27112020, 27, 11, 2020 );
+    $sql = "insert into ScoreDate values(11102020, 11,  10, 2020 );";
     $result = $db->query($sql);
-    $sql = "insert into ScoreDate values(12102020, 12, 42, 10, 2020 );";
+    $sql = "insert into ScoreDate values(12102020, 12,  10, 2020 );";
     $result = $db->query($sql);
 
     $sql = "insert into Country values(\"NZ\", \"new zealand\");";
@@ -141,25 +139,25 @@ CONSTRAINT `fk_book_author`
     $sql = "insert into UserProfile values(\"hindi\", 2, 19);";
     $result = $db->query($sql);
 
-    $sql = "insert into Score values(null, 1, \"gaming\", 8, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 8, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 1, \"gaming\", 9, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 9, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 2, \"gaming\", 12, 11102020, 0);";
+    $sql = "insert into Score values(null, 2, \"gaming\", 12, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 2, \"gaming\", 118, 11102020, 0);";
+    $sql = "insert into Score values(null, 2, \"gaming\", 118, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 2, \"gaming\", 2, 11102020, 0);";
+    $sql = "insert into Score values(null, 2, \"gaming\", 2, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 2, \"gaming\", 4, 11102020, 0);";
+    $sql = "insert into Score values(null, 2, \"gaming\", 4, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 1, \"gaming\", 81, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 81, 11102020);";
     $result = $db->query($sql);
-    $sql = "insert into Score values(null, 1, \"gaming\", 91, 11102020, 0);";
+    $sql = "insert into Score values(null, 1, \"gaming\", 91, 11102020);";
     $result = $db->query($sql);
 
 
-    $sql = "insert into XpGained values(2, 2, \"hindi\", 19, 12102020);";
+    $sql = "insert into XpGained values(null, 2, \"hindi\", 19, 12102020);";
     $result = $db->query($sql);
 
 

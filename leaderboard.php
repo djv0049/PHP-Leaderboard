@@ -2,11 +2,8 @@
 require "databasefunctions.php";
 class Leaderboard
 {
-    
     static $maxResults ;
-    
     public $settings;
-    
     public $type ;
     public  $language;
     public  $nameArray;
@@ -14,14 +11,15 @@ class Leaderboard
     static $sorted;
     function __construct()
     {
-        if(Leaderboard::$sorted != 'descending'){
+        if(Leaderboard::$sorted != 'descending')
+        {
             Leaderboard::$sorted = 'ascending';
         }
-        $this->allresults = $this->getResults();
-        $this->settings = parse_ini_file("settings.ini",true);
-        $this->type = $this->settings['website']['type'];
         $lang = parse_ini_file("i18n.ini",true);
-        $this->language = $lang[$this->type];
+        $this->settings = parse_ini_file("settings.ini",true);
+        $this->type = $this->settings;
+        $this->language = $lang[$GLOBALS['type']];
+        $this->allresults = $this->getResults();
     }
 
 
@@ -34,13 +32,31 @@ class Leaderboard
             $currentScores = array();
             $currentScores['name']  = $row['userName'];
             $currentScores['country'] = $row['country'];
-            $currentScores['score'] = $row['score'];
+            if($GLOBALS['type'] == 'gaming'){
+                $currentScores['score'] = $row['score'];
+            }
+            else
+            {
+                $currentScores['score'] = $row['amountGained'];
+            }
             $currentScores['date'] = $row['date'];
             array_push($allresults, $currentScores);
         }
         return $allresults;
     }
 
+    function displayLoggedInUser()
+    {
+        session_start();
+        if(isset($_SESSION['User']))
+        {
+            echo $_SESSION['User']. $this->language['login'];
+        }
+        else
+        {
+            echo "<a href = 'index.html'>Log in</a>";
+        }
+    }
 
     function displayScores()
     {
@@ -49,9 +65,9 @@ class Leaderboard
         $img = '';
         foreach ($this->allresults as $result)
         {
-            if(!isset($_SESSION['maxresults'])){
-                $_SESSION['maxresults'] = 5;
-            }
+            // if(!isset($_SESSION['maxresults'])){
+            //     $_SESSION['maxresults'] = 5;
+            // }
             if($rank <= $_SESSION['maxresults'] )
             {
                 echo "<div class=\"scoreEntry\" >";
@@ -79,13 +95,22 @@ class Leaderboard
         <?php
     }
 
+    function addScore()
+    {
+        $score = $_POST['newscore'];
+        insertScore($score);
+
+    }
+
     function loadMore()
     {
-        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] > 5)){
+        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] > 5))
+        {
             $_SESSION['maxresults'] =5;
         }
 
-        else if ($_SESSION['maxresults'] < count($this->allresults)){
+        else if ($_SESSION['maxresults'] < count($this->allresults))
+        {
             $_SESSION['maxresults'] +=5;
         }
         $this->loadResults();
@@ -93,15 +118,16 @@ class Leaderboard
 
     function loadLess()
     {
-        if($_SESSION['maxresults'] != 5 && !($_SESSION['maxresults'] >5))
-        {
-            $_SESSION['maxresults'] =5;
-        }
-
-        else if ($_SESSION['maxresults'] >  count($this->allresults))
+        if($_SESSION['maxresults'] > 5)
         {
             $_SESSION['maxresults'] -=5;
         }
+
+        else
+        {
+            $_SESSION['maxresults'] =5;
+        }
+        
         $this->loadResults();
     }
 
@@ -134,14 +160,7 @@ class Leaderboard
         $this->displayScores();
     }
     
-    function displayLoggedInUser()
-    {
-        session_start();
-        if(isset($_SESSION['User']))
-        {
-            echo $_SESSION['User']. $this->language['login'];
-        }
-    }
+    
     
     static function sortByAsc($a,$b)
     {                
